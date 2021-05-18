@@ -1,11 +1,41 @@
+import axios from "axios";
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import image from "../assets/logoVector.svg";
 
-export default function Login() {
+export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [picture, setPicture] = useState("");
+
+    function registerUser() {
+        const userObject = {
+            email,
+            name,
+            image,
+            password,
+        };
+
+        const request = axios.post(
+            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
+            userObject
+        );
+
+        //desabilitar campos e botão enquanto carrega
+
+        request.then((response) => {
+            console.log(response);
+            //redirecionar com useHistory para rota"/"
+        });
+
+        request.catch((error) => {
+            console.log(response);
+            //alerta informadndo a falha
+            //reabilitação dos campos e botões
+        });
+    }
 
     return (
         <BlankPage>
@@ -22,9 +52,21 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <OutsideButton>Entrar</OutsideButton>
-            <Link to="/cadastro">
-                <p>Não tem uma conta? Cadastre-se!</p>
+            <input
+                type="text"
+                placeholder="nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type="url"
+                placeholder="foto"
+                value={picture}
+                onChange={(e) => setPicture(e.target.value)}
+            />
+            <OutsideButton onClick={registerUser}>Cadastrar</OutsideButton>
+            <Link to="/">
+                <p>Já tem uma conta? Faça login!</p>
             </Link>
         </BlankPage>
     );

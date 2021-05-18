@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Header from "./Header";
 import Login from "./Login";
+import Register from "./Register";
 
 export default function App() {
     return (
@@ -11,6 +12,9 @@ export default function App() {
             <Switch>
                 <Route path="/" exact>
                     <Login />
+                </Route>
+                <Route path="/cadastro" exact>
+                    <Register />
                 </Route>
             </Switch>
         </BrowserRouter>
