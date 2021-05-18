@@ -1,11 +1,51 @@
+import axios from "axios";
 import styled from "styled-components";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import UserContext from "../contexts/UserContext";
 import image from "../assets/logoVector.svg";
 
 export default function Login() {
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [disabled, setDisabled] = useState(false);
+    const history = useHistory();
+    const loadEffect = (
+        <Loader type="ThreeDots" color="#fff" height={45} width={80} />
+    );
+
+    function logUser() {
+        if (email === "" || password === "") {
+            alert("Usuário ou senha não preenchidos.");
+            return;
+        }
+
+        const body = {
+            email,
+            password,
+        };
+
+        const request = axios.post(
+            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+            body
+        );
+
+        setDisabled(true);
+
+        request.then((response) => {
+            console.log(response.data);
+            setUser(response.data);
+            history.push("/hoje");
+        });
+
+        request.catch((error) => {
+            alert(`Usuário ou senha inválidos!`);
+            setDisabled(false);
+        });
+    }
 
     return (
         <BlankPage>
@@ -15,14 +55,18 @@ export default function Login() {
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={disabled}
             />
             <input
                 type="password"
                 placeholder="senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={disabled}
             />
-            <OutsideButton>Entrar</OutsideButton>
+            <OutsideButton onClick={logUser} disabled={disabled}>
+                {disabled ? loadEffect : `entrar`}
+            </OutsideButton>
             <Link to="/cadastro">
                 <p>Não tem uma conta? Cadastre-se!</p>
             </Link>
@@ -53,6 +97,7 @@ const BlankPage = styled.main`
         font-family: "Lexend Deca", sans-serif;
         font-size: 20px;
         padding-left: 11px;
+        color: #afafaf;
     }
 
     input::placeholder {
@@ -75,4 +120,5 @@ const OutsideButton = styled.button`
     font-size: 21px;
     font-family: "Lexend Deca", sans-serif;
     margin-bottom: 25px;
+    opacity: ${(props) => (props.disabled ? 0.6 : 1)};
 `;

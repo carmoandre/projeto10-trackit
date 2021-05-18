@@ -1,17 +1,31 @@
 import axios from "axios";
 import styled from "styled-components";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import image from "../assets/logoVector.svg";
+import { Link, useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import logo from "../assets/logoVector.svg";
 
 export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
-    const [picture, setPicture] = useState("");
+    const [image, setImage] = useState("");
+    const [disabled, setDisabled] = useState(false);
+    const history = useHistory();
+    const loadEffect = (
+        <Loader type="ThreeDots" color="#fff" height={45} width={80} />
+    );
 
     function registerUser() {
-        const userObject = {
+        if (email === "" || password === "" || name === "" || image === "") {
+            alert(
+                "Todos os campos são obrigatórios para o cadastro. Por favor, preencha os campos em branco."
+            );
+            return;
+        }
+
+        const body = {
             email,
             name,
             image,
@@ -20,51 +34,57 @@ export default function Register() {
 
         const request = axios.post(
             "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
-            userObject
+            body
         );
 
-        //desabilitar campos e botão enquanto carrega
+        setDisabled(true);
 
         request.then((response) => {
-            console.log(response);
-            //redirecionar com useHistory para rota"/"
+            history.push("/");
         });
 
         request.catch((error) => {
-            console.log(response);
-            //alerta informadndo a falha
-            //reabilitação dos campos e botões
+            alert(
+                `Não foi possível cadastrar com os dados fornecidos. Tente novamente com outros dados!`
+            );
+            setDisabled(false);
         });
     }
 
     return (
         <BlankPage>
-            <img src={image} alt="Vetores que compõe a logo do Track It" />
+            <img src={logo} alt="Vetores que compõe a logo do Track It" />
             <input
                 type="text"
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={disabled}
             />
             <input
                 type="password"
                 placeholder="senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={disabled}
             />
             <input
                 type="text"
                 placeholder="nome"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                disabled={disabled}
             />
             <input
                 type="url"
                 placeholder="foto"
-                value={picture}
-                onChange={(e) => setPicture(e.target.value)}
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                disabled={disabled}
             />
-            <OutsideButton onClick={registerUser}>Cadastrar</OutsideButton>
+            <OutsideButton onClick={registerUser} disabled={disabled}>
+                {disabled ? loadEffect : `Cadastrar`}
+            </OutsideButton>
             <Link to="/">
                 <p>Já tem uma conta? Faça login!</p>
             </Link>
@@ -95,6 +115,7 @@ const BlankPage = styled.main`
         font-family: "Lexend Deca", sans-serif;
         font-size: 20px;
         padding-left: 11px;
+        color: #afafaf;
     }
 
     input::placeholder {
@@ -117,4 +138,5 @@ const OutsideButton = styled.button`
     font-size: 21px;
     font-family: "Lexend Deca", sans-serif;
     margin-bottom: 25px;
+    opacity: ${(props) => (props.disabled ? 0.6 : 1)};
 `;

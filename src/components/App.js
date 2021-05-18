@@ -1,23 +1,28 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Header from "./Header";
+import UserContext from "../contexts/UserContext";
+import { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 
 export default function App() {
+    const [user, setUser] = useState(null);
+
     return (
-        <BrowserRouter>
-            <ResetCSS />
-            <GlobalStyle />
-            <Switch>
-                <Route path="/" exact>
-                    <Login />
-                </Route>
-                <Route path="/cadastro" exact>
-                    <Register />
-                </Route>
-            </Switch>
-        </BrowserRouter>
+        <UserContext.Provider value={{ user, setUser }}>
+            <BrowserRouter>
+                <ResetCSS />
+                <GlobalStyle />
+                <Switch>
+                    <Route path="/" exact>
+                        <Login />
+                    </Route>
+                    <Route path="/cadastro" exact>
+                        <Register />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </UserContext.Provider>
     );
 }
 
