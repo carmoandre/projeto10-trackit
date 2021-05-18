@@ -4,6 +4,7 @@ import UserContext from "../contexts/UserContext";
 import { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
+import Today from "./TodayScreen";
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -19,6 +20,9 @@ export default function App() {
                     </Route>
                     <Route path="/cadastro" exact>
                         <Register />
+                    </Route>
+                    <Route path="/hoje" exact>
+                        <Today />
                     </Route>
                 </Switch>
             </BrowserRouter>
