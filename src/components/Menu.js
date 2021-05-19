@@ -64,7 +64,7 @@ const BottomBar = styled.footer`
         font-size: 18px;
 
         div {
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             width: 91px;
             height: 91px;

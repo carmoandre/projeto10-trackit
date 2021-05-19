@@ -13,9 +13,10 @@ export default function Header() {
             <TopBar location={location}>
                 <div>
                     <p>TrackIt</p>
-                    <img src={user.image} alt="imagem do usuário" />
+                    <img src={user && user.image} alt="imagem do usuário" />
                 </div>
             </TopBar>
+            <TopDistance />
         </>
     );
 }
@@ -28,7 +29,7 @@ const TopBar = styled.header`
     background: #126ba5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     display: ${(props) =>
-        props.location.pathname !== "/" ||
+        props.location.pathname !== "/" &&
         props.location.pathname !== "/cadastro"
             ? "flex"
             : "none"};
@@ -55,4 +56,10 @@ const TopBar = styled.header`
             height: 51px;
         }
     }
+`;
+
+const TopDistance = styled.div`
+    width: 100%;
+    height: 70px;
+    background: #fff;
 `;
