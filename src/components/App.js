@@ -7,6 +7,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Today from "./TodayScreen";
 import Menu from "./Menu";
+import HabitScreen from "./HabitScreen";
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -23,6 +24,9 @@ export default function App() {
                     </Route>
                     <Route path="/cadastro" exact>
                         <Register />
+                    </Route>
+                    <Route path="/habitos" exact>
+                        <HabitScreen />
                     </Route>
                     <Route path="/hoje" exact>
                         <Today />

@@ -22,14 +22,13 @@ export default function Today() {
 
         request.then((response) => {
             console.log(response.data);
-            console.log("É Aqui");
-            //setHabitList(response.data);
+            setHabitList(response.data);
         });
 
         request.catch((error) => {
             console.log(error);
         });
-    }, [user, habitList]);
+    }, [user]);
 
     return (
         <Container>
