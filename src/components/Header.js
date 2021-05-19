@@ -16,7 +16,6 @@ export default function Header() {
                     <img src={user.image} alt="imagem do usuário" />
                 </div>
             </TopBar>
-            <TopDistance />
         </>
     );
 }
@@ -56,9 +55,4 @@ const TopBar = styled.header`
             height: 51px;
         }
     }
-`;
-
-const TopDistance = styled.div`
-    width: 100%;
-    height: 70px;
 `;

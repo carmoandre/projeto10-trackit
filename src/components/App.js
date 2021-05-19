@@ -2,9 +2,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import UserContext from "../contexts/UserContext";
 import { useState } from "react";
+import Header from "./Header";
 import Login from "./Login";
 import Register from "./Register";
 import Today from "./TodayScreen";
+import Menu from "./Menu";
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -14,6 +16,7 @@ export default function App() {
             <BrowserRouter>
                 <ResetCSS />
                 <GlobalStyle />
+                <Header />
                 <Switch>
                     <Route path="/" exact>
                         <Login />
@@ -25,6 +28,7 @@ export default function App() {
                         <Today />
                     </Route>
                 </Switch>
+                <Menu />
             </BrowserRouter>
         </UserContext.Provider>
     );
