@@ -1,34 +1,41 @@
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 export default function Menu() {
     const location = useLocation();
-    const percentage = 0;
+    const [percentage, setPercentage] = useState(0);
 
     return (
         <>
             <BottomBar location={location}>
                 <div>
-                    <p>Hábitos</p>
-                    <p></p>{" "}
-                    {/*usado para afastar mais os Hábitos e o histórico entre si*/}
+                    <Link to="/habitos">
+                        <p>Hábitos</p>
+                    </Link>
+                    <p></p>
+                    {/* o <p> acima está sendo usado para afastar mais os Hábitos e o histórico entre si*/}
                     <div>
-                        <CircularProgressbar
-                            value={percentage}
-                            text="Hoje"
-                            background
-                            backgroundPadding={6}
-                            styles={buildStyles({
-                                backgroundColor: "#52B6FF",
-                                textColor: "#fff",
-                                pathColor: "#fff",
-                                trailColor: "transparent",
-                            })}
-                        />
+                        <Link to="/hoje">
+                            <CircularProgressbar
+                                value={percentage}
+                                text="Hoje"
+                                background
+                                backgroundPadding={6}
+                                styles={buildStyles({
+                                    backgroundColor: "#52B6FF",
+                                    textColor: "#fff",
+                                    pathColor: "#fff",
+                                    trailColor: "transparent",
+                                })}
+                            />
+                        </Link>
                     </div>
-                    <p>Histórico</p>
+                    <Link to="/historico">
+                        <p>Histórico</p>
+                    </Link>
                 </div>
             </BottomBar>
         </>
