@@ -1,15 +1,20 @@
 import styled from "styled-components";
-import { AddOutline } from "react-ionicons";
+import AddHabitFormBox from "./AddHabitFormBox.js";
 
 export default function HabitScreen() {
-    const temp = true;
+    function addHabit() {}
     return (
         <>
             <Container>
                 <div>
                     <p>Meus hábitos</p>
-                    <AddButton>+</AddButton>
+                    <AddButton onClick={addHabit}>+</AddButton>
                 </div>
+                <AddHabitFormBox></AddHabitFormBox>
+                <EmptyListText>
+                    Você não tem nenhum hábito cadastrado ainda. Adicione um
+                    hábito para começar a trackear!
+                </EmptyListText>
                 {}
             </Container>
         </>
@@ -21,7 +26,7 @@ const Container = styled.main`
     display: flex;
     flex-direction: column;
 
-    div:first-child {
+    & > div:first-child {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -45,4 +50,11 @@ const AddButton = styled.button`
     border: none;
     font-size: 30px;
     color: #fff;
+`;
+
+const EmptyListText = styled.p`
+    color: #666666;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 28px;
 `;
