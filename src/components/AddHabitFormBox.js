@@ -26,7 +26,6 @@ export default function AddHabitFormBox({
         } else {
             newSelection[number] = number;
         }
-        console.log(newSelection);
         setDays(newSelection);
     }
 

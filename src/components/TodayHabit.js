@@ -63,7 +63,6 @@ export default function TodayHabit({ habit, renderTodayHabitsFromServer }) {
 
 const HabitCard = styled.div`
     width: 100%;
-    height: 94px;
     background: #fff;
     border-radius: 5px;
     display: flex;

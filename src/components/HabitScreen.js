@@ -164,7 +164,6 @@ const HabitBox = styled.div`
     background: #ffffff;
     border-radius: 5px;
     width: 100%;
-    height: 91px;
     margin-bottom: 10px;
     padding: 11px 10px 15px 15px;
     display: flex;
