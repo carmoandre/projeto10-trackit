@@ -75,7 +75,9 @@ export default function AddHabitFormBox({
     }
 
     function isSomeDaySelected() {
-        return days.find((element) => element !== -1);
+        return days.find((element) => element !== -1) === undefined
+            ? false
+            : true;
     }
 
     return (
