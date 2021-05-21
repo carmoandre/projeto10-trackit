@@ -13,7 +13,7 @@ export default function HabitScreen() {
 
     useEffect(() => {
         renderHabitsFromServer();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     function renderHabitsFromServer() {
         const config = {
@@ -104,9 +104,7 @@ export default function HabitScreen() {
                                 {daysLabels.map((day, index) => (
                                     <Day
                                         key={index + 1}
-                                        selected={habit.days.includes(
-                                            index + 1
-                                        )}
+                                        selected={habit.days.includes(index)}
                                     >
                                         {day}
                                     </Day>

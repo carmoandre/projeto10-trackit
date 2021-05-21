@@ -36,7 +36,6 @@ export default function Login() {
         setDisabled(true);
 
         request.then((response) => {
-            console.log(response.data);
             setUser(response.data);
             history.push("/hoje");
         });

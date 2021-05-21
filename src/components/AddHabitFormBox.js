@@ -13,7 +13,7 @@ export default function AddHabitFormBox({
 }) {
     const { user } = useContext(UserContext);
     const [name, setName] = useState("");
-    const [days, setDays] = useState([0, 0, 0, 0, 0, 0, 0]);
+    const [days, setDays] = useState([-1, -1, -1, -1, -1, -1, -1]);
     const [disabled, setDisabled] = useState(false);
     const loadEffect = (
         <Loader type="ThreeDots" color="#fff" height={35} width={62} />
@@ -22,9 +22,9 @@ export default function AddHabitFormBox({
     function selectDay(number) {
         const newSelection = [...days];
         if (days.includes(number)) {
-            newSelection[number - 1] = 0;
+            newSelection[number] = -1;
         } else {
-            newSelection[number - 1] = number;
+            newSelection[number] = number;
         }
         console.log(newSelection);
         setDays(newSelection);
@@ -41,7 +41,7 @@ export default function AddHabitFormBox({
 
         const body = {
             name,
-            days: days.filter((day) => day !== 0),
+            days: days.filter((day) => day !== -1),
         };
 
         const config = {
@@ -60,7 +60,7 @@ export default function AddHabitFormBox({
 
         request.then((response) => {
             setName("");
-            setDays(days.map((value) => 0));
+            setDays(days.map((value) => -1));
             setDisabled(false);
             setShowForm(false);
             renderHabitsFromServer();
@@ -75,7 +75,7 @@ export default function AddHabitFormBox({
     }
 
     function isSomeDaySelected() {
-        return days.find((element) => element !== 0);
+        return days.find((element) => element !== -1);
     }
 
     return (
@@ -93,9 +93,7 @@ export default function AddHabitFormBox({
                         <Weekday
                             key={index + 1}
                             selected={days[index]}
-                            onClick={
-                                disabled ? null : () => selectDay(index + 1)
-                            }
+                            onClick={disabled ? null : () => selectDay(index)}
                         >
                             {day}
                         </Weekday>
@@ -162,9 +160,10 @@ const WeekdaysOptions = styled.div`
 `;
 
 const Weekday = styled.div`
-    background: ${(props) => (props.selected ? "#CFCFCF" : "#fff")};
-    color: ${(props) => (props.selected ? "#fff" : "#dbdbdb")};
-    border: 1px solid ${(props) => (props.selected ? "#CFCFCF" : "#d5d5d5")};
+    background: ${(props) => (props.selected !== -1 ? "#CFCFCF" : "#fff")};
+    color: ${(props) => (props.selected !== -1 ? "#fff" : "#dbdbdb")};
+    border: 1px solid
+        ${(props) => (props.selected !== -1 ? "#CFCFCF" : "#d5d5d5")};
 `;
 
 const Buttons = styled.div`

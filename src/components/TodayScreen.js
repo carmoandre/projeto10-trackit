@@ -3,15 +3,14 @@ import { useState, useContext, useEffect } from "react";
 import UserContext from "../contexts/UserContext";
 import styled from "styled-components";
 import TodayHabit from "./TodayHabit";
+import dayjs from "dayjs";
 
 export default function TodayScreen() {
+    require("dayjs/locale/pt-br");
+    const todayFormatedDate = dayjs().locale("pt-br").format("dddd[,] DD/MM");
     const { user, setCurrentPercentage } = useContext(UserContext);
     const [donePercentage, setDonePercentage] = useState(0);
     const [habitList, setHabitList] = useState([]);
-    const todayDate = {
-        weekday: "Segunda-feira",
-        dayAndMonth: "17/05",
-    };
 
     useEffect(() => {
         renderTodayHabitsFromServer();
@@ -30,7 +29,6 @@ export default function TodayScreen() {
         );
 
         request.then((response) => {
-            console.log(response.data);
             setHabitList(response.data);
             const newPercentage = calculateDonePercentage(response.data);
             setDonePercentage(newPercentage);
@@ -38,7 +36,9 @@ export default function TodayScreen() {
         });
 
         request.catch((error) => {
-            console.log(error);
+            alert(
+                "Erro ao tentar recuperar os hábitos de hoje. Por favor, tente nomavemente mais tarde."
+            );
         });
     }
 
@@ -55,9 +55,7 @@ export default function TodayScreen() {
 
     return (
         <Container donePercentage={donePercentage}>
-            <p>
-                {todayDate.weekday}, {todayDate.dayAndMonth}
-            </p>
+            <p>{todayFormatedDate}</p>
             <p>
                 {donePercentage
                     ? `${donePercentage}% dos hábitos concluídos`

@@ -9,6 +9,7 @@ import Register from "./Register";
 import TodayScreen from "./TodayScreen";
 import Menu from "./Menu";
 import HabitScreen from "./HabitScreen";
+import HistoryScreen from "./HistoryScreen";
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -35,6 +36,9 @@ export default function App() {
                         </Route>
                         <Route path="/hoje" exact>
                             <TodayScreen />
+                        </Route>
+                        <Route path="/historico" exact>
+                            <HistoryScreen />
                         </Route>
                     </Switch>
                 </ScrollBarContainer>
