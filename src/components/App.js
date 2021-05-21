@@ -6,15 +6,18 @@ import { useState } from "react";
 import Header from "./Header";
 import Login from "./Login";
 import Register from "./Register";
-import Today from "./TodayScreen";
+import TodayScreen from "./TodayScreen";
 import Menu from "./Menu";
 import HabitScreen from "./HabitScreen";
 
 export default function App() {
     const [user, setUser] = useState(null);
+    const [currentPercentage, setCurrentPercentage] = useState(0);
 
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider
+            value={{ user, setUser, currentPercentage, setCurrentPercentage }}
+        >
             <BrowserRouter>
                 <ResetCSS />
                 <GlobalStyle />
@@ -31,7 +34,7 @@ export default function App() {
                             <HabitScreen />
                         </Route>
                         <Route path="/hoje" exact>
-                            <Today />
+                            <TodayScreen />
                         </Route>
                     </Switch>
                 </ScrollBarContainer>

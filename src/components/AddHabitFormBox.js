@@ -59,8 +59,6 @@ export default function AddHabitFormBox({
         setDisabled(true);
 
         request.then((response) => {
-            console.log("Sucesso");
-            console.log(response.data);
             setName("");
             setDays(days.map((value) => 0));
             setDisabled(false);
@@ -69,7 +67,6 @@ export default function AddHabitFormBox({
         });
 
         request.catch((error) => {
-            console.log(error);
             setDisabled(false);
             alert(
                 "Não foi possível cadastrar seu hábito. Por favor, verifique o preenchimento dos campos e tente novamente."

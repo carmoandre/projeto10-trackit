@@ -1,12 +1,13 @@
-import styled from "styled-components";
-import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import UserContext from "../contexts/UserContext";
+import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 export default function Menu() {
     const location = useLocation();
-    const [percentage, setPercentage] = useState(0);
+    const { currentPercentage } = useContext(UserContext);
 
     return (
         <>
@@ -21,7 +22,7 @@ export default function Menu() {
                     <div>
                         <Link to="/hoje">
                             <CircularProgressbar
-                                value={percentage}
+                                value={currentPercentage}
                                 text="Hoje"
                                 background
                                 backgroundPadding={6}
