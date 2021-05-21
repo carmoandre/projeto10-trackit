@@ -1,6 +1,6 @@
 import axios from "axios";
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -16,6 +16,15 @@ export default function Login() {
     const loadEffect = (
         <Loader type="ThreeDots" color="#fff" height={45} width={80} />
     );
+
+    const localStorageUser = localStorage.getItem("user");
+
+    useEffect(() => {
+        if (localStorageUser) {
+            setUser(JSON.parse(localStorageUser));
+            history.push("/hoje");
+        }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     function logUser() {
         if (email === "" || password === "") {
@@ -37,6 +46,8 @@ export default function Login() {
 
         request.then((response) => {
             setUser(response.data);
+            const stringUser = JSON.stringify(response.data);
+            localStorage.setItem("user", stringUser);
             history.push("/hoje");
         });
 
