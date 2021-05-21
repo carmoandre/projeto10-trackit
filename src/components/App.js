@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import UserContext from "../contexts/UserContext";
 import { useState } from "react";
 import Header from "./Header";
@@ -18,20 +19,22 @@ export default function App() {
                 <ResetCSS />
                 <GlobalStyle />
                 <Header />
-                <Switch>
-                    <Route path="/" exact>
-                        <Login />
-                    </Route>
-                    <Route path="/cadastro" exact>
-                        <Register />
-                    </Route>
-                    <Route path="/habitos" exact>
-                        <HabitScreen />
-                    </Route>
-                    <Route path="/hoje" exact>
-                        <Today />
-                    </Route>
-                </Switch>
+                <ScrollBarContainer>
+                    <Switch>
+                        <Route path="/" exact>
+                            <Login />
+                        </Route>
+                        <Route path="/cadastro" exact>
+                            <Register />
+                        </Route>
+                        <Route path="/habitos" exact>
+                            <HabitScreen />
+                        </Route>
+                        <Route path="/hoje" exact>
+                            <Today />
+                        </Route>
+                    </Switch>
+                </ScrollBarContainer>
                 <Menu />
             </BrowserRouter>
         </UserContext.Provider>
@@ -115,4 +118,9 @@ const GlobalStyle = createGlobalStyle`
         background: #e5e5e5;
     }
 
+`;
+
+const ScrollBarContainer = styled.div`
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
 `;

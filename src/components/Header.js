@@ -6,7 +6,6 @@ import UserContext from "../contexts/UserContext";
 export default function Header() {
     const { user } = useContext(UserContext);
     const location = useLocation();
-    console.log(user);
 
     return (
         <>
@@ -34,6 +33,7 @@ const TopBar = styled.header`
             ? "flex"
             : "none"};
     align-items: center;
+    z-index: 5;
 
     div {
         width: 100%;

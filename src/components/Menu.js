@@ -10,6 +10,7 @@ export default function Menu() {
 
     return (
         <>
+            <BottomDistance />
             <BottomBar location={location}>
                 <div>
                     <Link to="/habitos">
@@ -70,4 +71,11 @@ const BottomBar = styled.footer`
             height: 91px;
         }
     }
+`;
+
+const BottomDistance = styled.div`
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    margin-top: auto;
 `;
