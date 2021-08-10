@@ -17,7 +17,7 @@ export default function TodayHabit({ habit, renderTodayHabitsFromServer }) {
 
         const action = habit.done ? "uncheck" : "check";
         const request = axios.post(
-            `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}/${action}`,
+            `${process.env.REACT_APP_API_BASE_URL}/habits/${habit.id}/${action}`,
             {},
             config
         );

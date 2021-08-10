@@ -24,7 +24,7 @@ export default function TodayScreen() {
         };
 
         const request = axios.get(
-            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today",
+            `${process.env.REACT_APP_API_BASE_URL}/habits/today`,
             config
         );
 

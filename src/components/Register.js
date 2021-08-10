@@ -33,7 +33,7 @@ export default function Register() {
         };
 
         const request = axios.post(
-            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
+            `${process.env.REACT_APP_API_BASE_URL}/auth/sign-up`,
             body
         );
 

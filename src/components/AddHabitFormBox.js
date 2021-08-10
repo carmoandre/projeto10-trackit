@@ -50,7 +50,7 @@ export default function AddHabitFormBox({
         };
 
         const request = axios.post(
-            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+            `${process.env.REACT_APP_API_BASE_URL}/habits`,
             body,
             config
         );

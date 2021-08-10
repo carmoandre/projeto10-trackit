@@ -23,7 +23,7 @@ export default function HabitScreen() {
         };
 
         const request = axios.get(
-            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+            `${process.env.REACT_APP_API_BASE_URL}/habits`,
             config
         );
 
@@ -50,7 +50,7 @@ export default function HabitScreen() {
         };
 
         const request = axios.delete(
-            `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitID}`,
+            `${process.env.REACT_APP_API_BASE_URL}/habits/${habitID}`,
             config
         );
 

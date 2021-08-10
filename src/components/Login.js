@@ -38,7 +38,7 @@ export default function Login() {
         };
 
         const request = axios.post(
-            "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+            `${process.env.REACT_APP_API_BASE_URL}/auth/login`,
             body
         );
 
