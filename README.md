@@ -1,72 +1,101 @@
-Designed and developed for mobile use.
+<h1 align="center">
+    Track It
+</h1>
 
-# Getting Started with Create React App
+## About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Track it is an application that helps you to easily create and maintain good and healthy habits.<br>
 
-## Available Scripts
+The focus of this project is to further develop Front End skills and the concept of single-page applications, changing from vanilla JavaScript to React, using HTML5, CSS3 (with styled-components lib) and React itself. <a href="https://track-it-kappa.vercel.app" target="_blank">Or view here!</a>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   [x] Mobile Layout
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   [x] Homepage (Today) experience:
 
-### `npm test`
+    -   [x] Load the list of habits assigned for the current day;
+    -   [x] Mark habits done or undone;
+    -   [x] Track the percentage of completed habits;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   [x] Habits session
 
-### `npm run build`
+    -   [x] Show all registered habits;
+    -   [x] Let you create and erase habits;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   [x] History session
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    -   [x] Future session, to be implemented, that shows a calendar with highlighted color indication that differentiates days by habits accomplishment;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Layout
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The application layout is available on Figma:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a href="https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1">
+  <img alt="" src="https://img.shields.io/badge/%20Layout%20-Figma-%2304D361?style=for-the-badge&logo=appveyor">
+</a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Demo
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<p align="center">
+  <img alt="Using screen GIF" title="#Usage" src="src/assets/trackIt.gif" width="200px" height="355px">
+</p>
 
-## Learn More
+## Tech Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The following tools were used in the construction of the project:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   **[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)**
+-   **[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://html5.org/)**
+-   **[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/Overview.en.html)**
+-   **[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://www.javascript.com/)**
 
-### Code Splitting
+#### **Utilities**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   Prototype: **[Figma](https://www.figma.com/)** → **[Prototype (Track It)](https://www.figma.com/file/rc7ZTYfLZg9zpGahWB1aXb/Cineflex?node-id=0%3A1)**
+-   Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
+-   Fonts: **[Lexend Deca](https://fonts.google.com/specimen/Lexend+Deca)**, **[Playball](https://fonts.google.com/specimen/Playball)**
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## How to run
 
-### Making a Progressive Web App
+1. Clone this repository
+2. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm i
+```
 
-### Advanced Configuration
+3. Create .env file in origin and insert
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+REACT_APP_API_BASE_URL="hhttps://mock-api.bootcamp.respondeai.com.br/api/v2/trackit"
+```
 
-### Deployment
+4. Run the front-end with
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm start
+```
 
-### `npm run build` fails to minify
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>
+<a style="border-radius: 50px;" width="100px;" href="https://github.com/carmoandre">
+ <img style="border-radius: 50px;" src="https://avatars.githubusercontent.com/u/35240214?v=4" width="100px;" alt="André Carmo"/>
+ <br />
+ <sub><b>André Carmo</b></sub></a>
+ <br />
+
+## </p>
+
+## License
+
+👋🏽 Get in Touch!
+
+---
