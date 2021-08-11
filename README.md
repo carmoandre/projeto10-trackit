@@ -39,7 +39,7 @@ The application layout is available on Figma:
   <img alt="" src="https://img.shields.io/badge/%20Layout%20-Figma-%2304D361?style=for-the-badge&logo=appveyor">
 </a>
 
-### Demo
+### Demo (Mobile)
 
 <p align="center">
   <img alt="Using screen GIF" title="#Usage" src="src/assets/trackIt.gif" width="200px" height="355px">
