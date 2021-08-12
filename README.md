@@ -74,7 +74,7 @@ npm i
 3. Create .env file in origin and insert
 
 ```bash
-REACT_APP_API_BASE_URL="hhttps://mock-api.bootcamp.respondeai.com.br/api/v2/trackit"
+REACT_APP_API_BASE_URL="https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit"
 ```
 
 4. Run the front-end with
